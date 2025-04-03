@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+# ☁️ Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple and modern weather application built with **React.js** and **TypeScript**, integrating with the OpenWeatherMap API to provide real-time weather updates.
 
-## Available Scripts
+## 🛠️ Features
+- ✨ **Search for any city** and get live weather updates
+- ☀️ **Displays current temperature** in Celsius
+- ⛅️ **Weather conditions with icons**
+- 📅 **Last updated time for accuracy**
+- ⬆️ **Data caching** to reduce API requests
+- 🎨 **Minimalist and responsive UI** with Mantine
 
-In the project directory, you can run:
+## 📖 Tech Stack
+- ⚛️ React.js (TypeScript)
+- 📂 Axios for API calls
+- 🌟 Mantine for UI components
+- ⚡ Jest & React Testing Library for testing
 
-### `npm start`
+## 🛠️ Installation & Setup
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/weather-app.git
+   cd weather-app
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Get an API key from [OpenWeatherMap](https://openweathermap.org/api) and add it to `.env`:
+   ```env
+   REACT_APP_WEATHER_API_KEY=your_api_key_here
+   ```
+4. Start the development server:
+   ```sh
+   npm start
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🔎 Usage
+1. Enter a city name in the search bar
+2. Click the "Get Weather" button
+3. View real-time weather details
+4. Cached data will be stored for 5 minutes to optimize API requests
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🎨 UI Preview
+![Weather App UI](https://via.placeholder.com/800x400?text=Weather+App+Preview)
 
-### `npm test`
+## 🔧 Testing
+Run unit tests to ensure the application functions correctly:
+```sh
+npm test
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛡️ Error Handling
+- If a city is **not found**, an error message will be displayed.
+- If the API request fails, a **fallback message** will notify the user.
 
-### `npm run build`
+## 💪 Contributing
+Contributions are welcome! Feel free to fork the repo and submit a pull request.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ✨ License
+This project is licensed under the **MIT License**.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
+Made with ❤️ by [Your Name](https://github.com/your-username)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
