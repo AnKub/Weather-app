@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, TextInput, Button, Card, Text, Image } from "@mantine/core";
+import styles from "./WeatherApp.module.scss";
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
-// Трохи інтерфейсу, щоб тапскрипт не матюкався
 interface WeatherResponse {
   name: string;
   main: {
@@ -50,7 +50,6 @@ const WeatherApp: React.FC = () => {
     try {
       setError("");
 
-      // тут я використовую координати щоб не плуався пошук
       const geoResponse = await axios.get<GeoResponse[]>("https://api.openweathermap.org/geo/1.0/direct", {
         params: { q: city, limit: 1, appid: API_KEY },
       });
@@ -59,9 +58,8 @@ const WeatherApp: React.FC = () => {
         throw new Error("City not found.");
       }
 
-      const { lat, lon } = geoResponse.data[0];  
+      const { lat, lon } = geoResponse.data[0];
 
-      //отримання погодних умов за геолокацією))
       const weatherResponse = await axios.get<WeatherResponse>("https://api.openweathermap.org/data/2.5/weather", {
         params: { lat, lon, appid: API_KEY, units: "metric" },
       });
@@ -75,29 +73,41 @@ const WeatherApp: React.FC = () => {
   };
 
   return (
-    <Container>
-      <TextInput
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        placeholder="Enter city"
-      />
-      <Button onClick={fetchWeather}>Get Weather</Button>
-
-      {error && <Text color="red">{error}</Text>}
-
+    <Container className={styles.container}>
+      <div className={styles.inputContainer}>
+        <TextInput
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          placeholder="Enter city"
+          className={styles.input} 
+        />
+        <Button onClick={fetchWeather} className={styles.button}>Get Weather</Button>
+      </div>
+  
+      {error && <Text className={styles.error}>{error}</Text>}
+  
       {weather && (
-        <Card>
-          <Text>{weather.name}</Text>
-          <Text>{weather.main.temp}°C</Text>
-          <Text>{weather.weather[0].description}</Text>
-          <Image
-            src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
-            alt="weather icon"
-          />
+        <Card className={styles.card}>   
+          <Text className={styles.cityName}>{weather.name}</Text>
+  
+          <div className={styles.weatherDetails}>
+            <div className={styles.leftSide}>
+              <Image
+                src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+                alt="weather icon"
+                className={styles.weatherIcon}
+              />
+              <Text className={styles.weatherDescription}>{weather.weather[0].description}</Text>
+            </div>
+            <div className={styles.rightSide}>
+              <Text className={styles.temperature}>{weather.main.temp}°C</Text>
+            </div>
+          </div>
         </Card>
       )}
     </Container>
   );
+  
 };
 
 export default WeatherApp;
