@@ -30,12 +30,11 @@ input {
   width: 80%;         
   margin-bottom: 15px;  
   outline: none;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 input:focus {
   border-color: #f35cda;
-  transform: scale(1.05); 
 }
 
 button {
@@ -60,6 +59,7 @@ button:hover {
 }
 
 .card {
+  position: relative;
   background: rgba(80, 1, 66, 0.8);
   padding: 40px;
   border-radius: 15px;
@@ -68,7 +68,7 @@ button:hover {
   max-width: 400px;
   text-align: center;
   margin-top: 15px;
-  animation: cardBackgroundMove 10s ease infinite;
+  overflow: hidden;
 }
 
 .weatherDetails {
@@ -116,7 +116,6 @@ button:hover {
   }
 }
 
-
 .text {
   color: #a2d5f1;
   margin: 5px 0;
@@ -137,7 +136,7 @@ button:hover {
 
 .temperature {
   font-size: 60px;
-  font-weight:lighter;
+  font-weight: lighter;
   color: #fbf19a;
 }
 
